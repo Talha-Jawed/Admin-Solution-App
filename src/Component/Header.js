@@ -86,22 +86,13 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl, pic } = this.state;
     const open = Boolean(anchorEl);
-    // console.log(pic , 'pic******');
     
     return (
       <div className={classes.root} style={{ color: 'black' }}>
         <FormGroup>
-          {/* <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          /> */}
         </FormGroup>
         <AppBar position="static" style={{ backgroundColor: '#5c99e8' }}>
           <Toolbar>
-            
-            
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : undefined}
                   aria-haspopup="true"

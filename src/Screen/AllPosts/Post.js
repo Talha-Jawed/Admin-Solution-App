@@ -23,8 +23,6 @@ class AllPost extends Component {
                 this.props.user(currentUser)
             }
         })
-        // console.log('uid===DID', UID);
-        // console.log('users===DID', AllUser);
         var post = []
         if (AllUser) {
             setTimeout(() => {
@@ -70,11 +68,7 @@ class AllPost extends Component {
         const { _post, post } = this.state
         return (
             <div>
-                {/* <Header size='huge' color='blue'>Huge Header</Header>
-                <button onClick={() => this.login()}>post</button> */}
                 <MenuAppBar />
-                {/* <button onClick={() => this.Category()} className="button">Add Category</button>
-                <button onClick={() => this.login()} className="button">Show Graph</button> */}
                 <div style={styles.div} >
                     {_post &&
                         post.map((item, index) => {
@@ -111,22 +105,17 @@ const styles = {
     div: {
         backgroundColor: '#edf0f4',
         flexWrap: 'wrap',
-        // flexDirection:'row',
         justifyContent: 'center',
         display: 'flex',
         padding: '10px'
     },
     post: {
-        // marginTop: '3px',
         backgroundColor: '#bdd3ef',
-        // flexWrap: 'wrap',
         border: '2px solid #5c99e8',
         borderRadius: '10px',
         overFlow: 'hidden',
-        // alignItems: 'center',
         margin: '8px',
         padding: '6px',
-        // alignSelf:'center',
         display: 'flex',
         flexDirection: 'column'
 

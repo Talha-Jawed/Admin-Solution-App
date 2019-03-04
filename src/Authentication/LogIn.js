@@ -26,8 +26,6 @@ class LogIn extends Component {
 
     componentWillReceiveProps(props) {
         const { CurrentUser, UID, AllUser } = props
-        // console.log(CurrentUser, '===>>');
-        // console.log(UID, '===>>');
         if (UID) {
             setTimeout(() => {
                 console.log(AllUser, 'user>>');
@@ -51,7 +49,6 @@ class LogIn extends Component {
 
     render() {
         const { Email, Password } = this.state
-        // console.log("===> ", email);
 
         return (
             <div className="main-container">

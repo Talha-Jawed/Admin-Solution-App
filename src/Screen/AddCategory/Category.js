@@ -117,8 +117,6 @@ class catagories extends Component {
     return (
       <div >
         <MenuAppBar />
-        {/* <button onClick={() => this.Category()} className="button">Show Graph</button>
-        <button onClick={() => this.login()} className="button">All Users</button> */}
         <div style={{
           flexWrap: 'wrap',
           // flexDirection:'row',
@@ -127,16 +125,12 @@ class catagories extends Component {
           padding: '10px'
         }}>
           <TextField onChange={this._handleErrorInputChange} id="username" label="Add a service" type="text" fullWidth autoFocus required default />
-          {/* <Button variant="contained" color="secondary" onClick={() => this.submit()}>
-            Add
-    </Button> */}
           <button onClick={() => this.submit()} className="button">ADD</button>
         </div>{
           services &&
 
           <div style={{
             flexWrap: 'wrap',
-            // flexDirection:'row',
             justifyContent: 'center',
             display: 'flex',
             padding: '10px'
@@ -193,12 +187,7 @@ function mapStateToProp(state) {
 function mapDispatchToProp(dispatch) {
   return ({
 
-    // login: (email,password)=>{
-    // dispatch(Login(email,password))
-    // },
-    // user: (currentUser) => {
-    //     dispatch(current_User(currentUser))
-    // },
+  
   })
 }
 

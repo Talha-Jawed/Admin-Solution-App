@@ -42,8 +42,6 @@ class ViewPost extends Component {
 
         firebase.database().ref('/UserData/').on('child_changed', snapShot => {
             if (snapShot.key === postUID) {
-                // console.log(snapShot.val(), ';;;;;;;');
-
                 if (snapShot.val().admin === 'Block') {
                     this.setState({ _block: true })
                 } else if (snapShot.val().admin === 'unBlock') {
@@ -52,24 +50,6 @@ class ViewPost extends Component {
             }
 
         })
-        // firebase.database().ref('/Messages/').on('child_added', snapShot => {
-
-        //     if (postUID === snapShot.val().reciver.UID || postUID === snapShot.val().reciverUid) {
-        //         console.log('reciver==>>', snapShot.val());
-        //         reciveMsg.push(snapShot.val())
-
-        //     } else if (postUID === snapShot.val().sender.UID || postUID === snapShot.val().senderUid) {
-        //         console.log('sender==>>', snapShot.val());
-        //         sendMsg.push(snapShot.val())
-        //     }
-        //     this.setState({ reciveMsg, sendMsg })
-        // })
-        // this.chat()
-
-        // }
-        // chat =()=> {
-        // const { adminUID, userUID , item} = this.state
-        // console.log('=======usUID', adminUID);
         var newUpdate = []
         var AllMessages = []
         firebase.database().ref('/Messages/').on('child_added', snapShot => {
@@ -80,20 +60,16 @@ class ViewPost extends Component {
                 AllMessages.push(Messages)
                 newUpdate.push(Messages)
             }
-            // const currentUser = CurrentUser
-            // const receverPerson = user
             var chat = []
             AllMessages.map((i) => {
                 if (i.senderUid === UID && i.reciverUid === postUID) {
                     chat.push(i)
-                    // console.log(i, 'chat did1')
                     this.setState({
                         pp: true
                     })
                 }
                 else if (i.reciverUid === UID && i.senderUid === postUID) {
                     chat.push(i)
-                    // console.log(i, 'chat did2')
                     this.setState({
                         pp: true
                     })
@@ -215,10 +191,10 @@ class ViewPost extends Component {
                         </div>
                     }
                 </div>
-                
+
                 {openChat &&
-                    <div style={{ border: '2px solid #5c99e8', borderRadius: '10px', height: '394px', width: '315px', flex: 1, margin: '20px' , overflow:'hidden' }}>
-                        <div style={{  height: '365px', flexWrap: 'wrap' , backgroundColor: '#edf0f4' }} className="chatDiv" >
+                    <div style={{ border: '2px solid #5c99e8', borderRadius: '10px', height: '394px', width: '315px', flex: 1, margin: '20px', overflow: 'hidden' }}>
+                        <div style={{ height: '365px', flexWrap: 'wrap', backgroundColor: '#edf0f4' }} className="chatDiv" >
                             {
 
                                 chatMesg &&
@@ -251,7 +227,7 @@ class ViewPost extends Component {
                                 type='text'
                                 value={text}
                                 onChange={(e) => this.setState({ text: e.target.value })}
-                                style={{ width: '75%', padding: '4px', textAlign: 'left', color: 'black', borderRadius: '9px' ,marginRight: '6px', border: '2px solid #5c99e8' }} />
+                                style={{ width: '75%', padding: '4px', textAlign: 'left', color: 'black', borderRadius: '9px', marginRight: '6px', border: '2px solid #5c99e8' }} />
                             <button onClick={() => this.send()} style={{ backgroundColor: '#5c99e8', fontWeight: 'bold', color: 'white', border: 'none', padding: 2, borderRadius: '2px', margin: '1px' }} >SEND</button>
                         </div>
                     </div>
@@ -266,32 +242,6 @@ class ViewPost extends Component {
                     })
 
                 }
-                {/* {
-
-                    chatMesg &&
-                    chatMesg.map((i, index) => {
-                        // console.log(i, "map")
-                        if (i.senderUid === adminUID) {
-                            return (
-                                <div style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'flex-end', right: 0 }}>
-                                    <div key={index} style={{ flex: 1, backgroundColor: '#25D366', width: 200, borderRadius: 12, justifyContent: 'flex-end', alignItems: 'flex-end', borderWidth: 2, overflow: 'hidden', borderColor: '#ffffff' }}>
-                                        <text style={{ fontSize: 15, padding: 4, fontWeight: '500', margin: 6 }}>{i.message}</text>
-                                    </div>
-                                </div>
-                            )
-                        } else if (i.senderUid === userUID) {
-                            return (
-                                <div style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'flex-start', left: 0 }}>
-                                    <div key={index} style={{ flex: 1, backgroundColor: '#cdddf7', width: 200, borderRadius: 12, justifyContent: 'flex-start', alignItems: 'flex-start', borderWidth: 2, overflow: 'hidden', borderColor: '#ffffff' }}>
-                                        <text style={{ fontSize: 15, padding: 4, fontWeight: '500', margin: 6 }}>{i.message}</text>
-                                    </div>
-                                </div>
-                            )
-                        }
-
-                    })
-
-                } */}
                 {
                     sendMsg &&
                     sendMsg.map((item, index) => {
@@ -309,24 +259,18 @@ class ViewPost extends Component {
 const styles = {
     div: {
         backgroundColor: '#edf0f4',
-        // flexWrap: 'wrap',
-        // flexDirection:'row',
         justifyContent: 'center',
         display: 'flex',
         padding: '10px'
     },
     post: {
-        // marginTop: '3px',
         flexBasis: '100%',
         backgroundColor: '#bdd3ef',
-        // flexWrap: 'wrap',
         border: '2px solid #5c99e8',
         borderRadius: '10px',
         overFlow: 'hidden',
-        // alignItems: 'center',
         margin: '10px',
         padding: '8px',
-        // alignSelf:'center',
         display: 'flex',
         flexDirection: 'column'
 
