@@ -59,9 +59,7 @@ class AllPost extends Component {
         this.props.history.push('/Category')
     }
     view(item) {
-        // console.log(item, 'vier<<<');
         this.props.history.push('/ViewPost', item)
-
     }
 
     render() {
@@ -72,8 +70,6 @@ class AllPost extends Component {
                 <div style={styles.div} >
                     {_post &&
                         post.map((item, index) => {
-                            // console.log(item);
-
                             return (
                                 <div>
                                     <div key={index} style={styles.post} className="POST">
